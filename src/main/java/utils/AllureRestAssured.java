@@ -83,7 +83,7 @@ public class AllureRestAssured implements OrderedFilter {
         final Set<String> hiddenHeaders = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
         hiddenHeaders.addAll(Objects.requireNonNull(requestSpec.getConfig().getLogConfig().blacklistedHeaders()));
 
-        final HttpRequestAttachment.Builder requestAttachmentBuilder = create(requestSpec.getURI(), url)
+        final HttpRequestAttachment.Builder requestAttachmentBuilder = create(requestSpec.getMethod()+" "+requestSpec.getURI(), url)
                 .setMethod(requestSpec.getMethod())
                 .setHeaders(toMapConverter(requestSpec.getHeaders(), hiddenHeaders))
                 .setCookies(toMapConverter(requestSpec.getCookies(), new HashSet<>()));

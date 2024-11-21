@@ -4,7 +4,12 @@ import models.users.UserResponse;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -23,7 +28,12 @@ public class BaseTest {
     TodosControllers todosControllers = new TodosControllers();
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuite () {
+    public void beforeSuite () throws IOException {
+
+        Files.walk(Path.of(System.getProperty("user.dir")+"/allure-results"))
+                .sorted(Comparator.reverseOrder())
+                .map(Path::toFile)
+                .forEach(File::delete);
         email = grEmail();
         String requestBody = String.format("{ \"email\": \"%s\", \"password\": \"Password123\" }",email);
         Response getResponse =  given()

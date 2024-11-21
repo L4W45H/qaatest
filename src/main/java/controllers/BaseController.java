@@ -8,6 +8,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
+import utils.AllureRestAssured;
 
 import java.util.Map;
 import java.util.Objects;
@@ -22,6 +23,7 @@ public class BaseController {
                 .setPort(3000)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
+                .addFilter(new AllureRestAssured())
                 .build();
     }
 

@@ -1,4 +1,5 @@
 import controllers.*;
+import eNums.Endpoints;
 import io.restassured.response.Response;
 import models.users.UserResponse;
 import org.testng.annotations.AfterSuite;
@@ -12,6 +13,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
 
+import static eNums.Endpoints.USERS;
+import static eNums.Endpoints.valueOfLabel;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertTrue;
 import static utils.Utils.grEmail;
@@ -48,7 +51,7 @@ public class BaseTest {
     @AfterSuite(alwaysRun = true)
     public void afterSuite () {
         UserControllers userControllers = new UserControllers();
-        UserResponse[] allUsers = userControllers.rBase(Map.of(),"/users",200)
+        UserResponse[] allUsers = userControllers.rBase(Map.of(), valueOfLabel(USERS),200)
                 .extract()
                 .as(UserResponse[].class);
         Integer id = Arrays.stream(allUsers).filter(user->user.getEmail().equals(email)).findFirst().get().getId();

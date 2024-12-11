@@ -72,7 +72,7 @@ public class Driver {
 
     public Properties properties () throws IOException {
         Properties prop = new Properties();
-        File configFile = new File("/home/l4w45h-linux/apps/idea-IC-243.21565.193/qaatest-main/src/main/resources/config.properties");
+        File configFile = new File(System.getProperty("user.dir") + "/src/main/resources/config.properties");
         InputStream stream = new FileInputStream(configFile);
         prop.load(stream);
         return prop;

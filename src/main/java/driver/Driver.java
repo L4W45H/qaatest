@@ -42,7 +42,7 @@ public class Driver {
     }
 
     public EdgeDriver edgeDriver() {
-        System.setProperty("webdriver.edge.driver", "/home/lwiwske-rizdwjane/apps/edge_webdriver/msedgedriver");
+        System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "/src/main/resources/msedgedriver");
         EdgeDriver edgeDriver = new EdgeDriver();
         return edgeDriver;
     }

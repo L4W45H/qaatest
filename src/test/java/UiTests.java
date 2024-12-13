@@ -60,13 +60,13 @@ public class UiTests {
         String driverType = Browser.getDriverType();
         WebDriver driver = null;
         switch (driverType) {
-            case "IE":
+            case "FIREROX":
                 driver = new FirefoxDriver();
                 break;
-            case "Edge":
+            case "EDGE":
                 driver = new EdgeDriver();
                 break;
-            case "Chrome":
+            case "CHROME":
                 driver = new ChromeDriver();
                 break;
             default:

@@ -48,13 +48,14 @@ public class Driver {
     }
 
     public WebDriver getWebDriver() {
-        String browser;
-        try {
-            browser = properties().getProperty("webdriver");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Browsers browsers = Browsers.valueOfBrowsers(browser);
+//        String browser;
+//        try {
+//            browser = properties().getProperty("webdriver");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        String driverType = System.getProperty("Browser","EDGE");
+        Browsers browsers = Browsers.valueOfBrowsers(driverType);
         switch (browsers) {
             case CHROME -> {
                 return chromeDriver();

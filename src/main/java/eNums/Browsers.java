@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public enum Browsers {
-    CHROME("chrome"),
-   EDGE("edge"),
-    FIREFOX("firefox");
+    CHROME("CHROME"),
+   EDGE("EDGE"),
+    FIREFOX("FIREFOX");
 
     public final String label;
 

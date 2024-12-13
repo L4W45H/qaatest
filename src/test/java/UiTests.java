@@ -60,7 +60,7 @@ public class UiTests {
         String driverType = Browser.getDriverType();
         WebDriver driver = null;
         switch (driverType) {
-            case "FIREROX":
+            case "FIREFOX":
                 driver = new FirefoxDriver();
                 break;
             case "EDGE":

@@ -1,8 +1,11 @@
 import com.beust.ah.A;
+import driver.Browser;
 import driver.Driver;
 import models.users.Comments;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.v128.page.model.Frame;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -52,6 +55,25 @@ import static org.testng.Assert.assertNotEquals;
 public class UiTests {
     WebDriver driver;
     File file;
+
+    public static WebDriver getDriver() {
+        String driverType = Browser.getDriverType();
+        WebDriver driver = null;
+        switch (driverType) {
+            case "IE":
+                driver = new FirefoxDriver();
+                break;
+            case "Edge":
+                driver = new EdgeDriver();
+                break;
+            case "Chrome":
+                driver = new ChromeDriver();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown browser type: " + driverType);
+        }
+        return driver;
+    }
 
 
     @BeforeMethod

@@ -19,6 +19,7 @@ import java.util.PropertyPermission;
 public class Driver {
 
     public FirefoxDriver fireFox() {
+      //  System.setProperty("webdriver.gecko.driver", "/usr/lib/firefox/firefox");
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.download.folderList", 2);
         profile.setPreference("browser.download.manager.showWhenStarting", false);
@@ -41,7 +42,7 @@ public class Driver {
     }
 
     public EdgeDriver edgeDriver() {
-        System.setProperty("webdriver.edge.driver", "/home/l4w45h-linux/apps/edge_webdriver/msedgedriver");
+        System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "/src/main/resources/msedgedriver");
         EdgeDriver edgeDriver = new EdgeDriver();
         return edgeDriver;
     }

@@ -79,7 +79,8 @@ public class UiTests {
     @BeforeMethod
     public void beforeM() {
         Driver browserDriver = new Driver();
-        driver = browserDriver.getWebDriver();
+       // driver = browserDriver.getWebDriver();
+        driver = getDriver();
         driver.get("https://demoqa.com");
         driver.manage().window().maximize();
 

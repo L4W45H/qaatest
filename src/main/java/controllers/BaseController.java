@@ -17,9 +17,11 @@ import static io.restassured.RestAssured.given;
 
 public class BaseController {
 
+    String url = System.getProperty("baseURL", "http://localhost");
+
     public RequestSpecification reqSpec () {
         return new RequestSpecBuilder()
-                .setBaseUri("http://localhost")
+                .setBaseUri(url)
                 .setPort(3000)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
